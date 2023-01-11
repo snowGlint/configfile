@@ -1,0 +1,6 @@
+git config --global  user.name  "xxx"
+git config --global user.email  "706990@gmail.com"
+git config --list
+
+git init
+git remote add origin https://github.com/xxx/repo.git"

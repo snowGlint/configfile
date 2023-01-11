@@ -1,0 +1,26 @@
+# Set locale to utf8
+is_uft8_support <- grepl(
+    "UTF-8|utf8", Sys.getenv("LANG"),
+    ignore.case = TRUE, perl = TRUE
+) &&
+    R.version$major >= 4L &&
+    R.version$minor >= 2.0
+if (is_uft8_support) {
+    suppressWarnings(Sys.setlocale("LC_ALL", Sys.getenv("LANG")))
+}
+
+# init .vsc.*
+if (interactive() && Sys.getenv("RSTUDIO") == "") {
+  source(file.path(Sys.getenv(if (.Platform$OS.type == "windows") "USERPROFILE" else "HOME"), ".vscode-R", "init.R"))
+}
+
+# use httpggd to view
+if (interactive() && Sys.getenv("TERM_PROGRAM") == "vscode") {
+  if ("httpgd" %in% .packages(all.available = TRUE)) {
+    options(vsc.plot = FALSE)
+    options(device = function(...) {
+      httpgd::hgd(silent = TRUE)
+      .vsc.browser(httpgd::hgd_url(history = FALSE), viewer = "Beside")
+    })
+  }
+}

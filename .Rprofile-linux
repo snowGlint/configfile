@@ -1,0 +1,25 @@
+# init .vsc.*
+if (interactive() && Sys.getenv("RSTUDIO") == "") {
+  source(file.path(Sys.getenv(if (.Platform$OS.type == "windows") "USERPROFILE" else "HOME"), ".vscode-R", "init.R"))
+}
+
+# use httpggd to view
+if (interactive() && Sys.getenv("TERM_PROGRAM") == "vscode") {
+  if ("httpgd" %in% .packages(all.available = TRUE)) {
+    options(vsc.plot = FALSE)
+    options(device = function(...) {
+      httpgd::hgd(silent = TRUE)
+      .vsc.browser(httpgd::hgd_url(history = FALSE), viewer = "Beside")
+    })
+  }
+}
+
+# rstudio package manager
+options(repos = c(REPO_NAME = "https://packagemanager.rstudio.com/cran/latest"))
+options(BioC_mirror = "https://packagemanager.rstudio.com/bioconductor")
+
+# re-define install.packages
+install.packages <- function(pkgs) utils::install.packages(pkgs, INSTALL_opts = '--no-multiarch')
+
+# set pandoc path
+Sys.setenv(RSTUDIO_PANDOC="/its1/GB_BT1/cuiwei/conda_software/bin/pandoc")
