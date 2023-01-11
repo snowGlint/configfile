@@ -7,14 +7,14 @@ git config --list
 
 echo "# rp-sftw" >> README.md
 ...
-git init
+git init # 将目录初始化git目录
 
-git add -A
-git commit -a -m "first commit"
+git add -A # 添加所有文件到暂存区
+git commit -a -m "first commit" # 提交所有文件（-a），并写提交日志（-m)
 
-git branch -M main
+git branch -M main # 对该git 目录建立一个main分支
 
-git remote add origin https://github.com/sonwGlint/rp-sftw.git
+git remote add origin https://github.com/sonwGlint/rp-sftw.git # 将该目录与远程github资源链接
 
-git push -u origin main
+git push -u origin main # 将本地目录资源推送到远程的github目录
 
