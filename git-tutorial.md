@@ -13,6 +13,8 @@ git config --list # 列出所有配置信息
 ```git
 git remote add origin <https://github.com/snowGlint/easybio.git>
 git push -u origin main
+
+git remote set-url origin new.git.url/here # 改变远端github地址
 ```
 
 ```git
