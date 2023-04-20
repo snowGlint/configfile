@@ -19,7 +19,9 @@ options(repos = c(REPO_NAME = "https://packagemanager.rstudio.com/cran/latest"))
 options(BioC_mirror = "https://packagemanager.rstudio.com/bioconductor")
 
 # re-define install.packages
-install.packages <- function(pkgs) utils::install.packages(pkgs, INSTALL_opts = '--no-multiarch')
+install.packages <- function(pkgs) {
+  utils::install.packages(pkgs, INSTALL_opts = "--no-multiarch")
+  }
 
 # set pandoc path
-Sys.setenv(RSTUDIO_PANDOC="/its1/GB_BT1/cuiwei/conda_software/bin/pandoc")
+Sys.setenv(RSTUDIO_PANDOC = "/its1/GB_BT1/cuiwei/conda_software/bin/pandoc")
