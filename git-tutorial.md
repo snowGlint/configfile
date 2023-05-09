@@ -51,3 +51,16 @@ g​it push -​f origin xxx # 把rebase后并且更新过的代码再push到远
 git branch -d xxx # 删除本地的git分支
 git pull origin main  
 ```
+## 问题
+
+无法Push， 可能的原因是该分支在远端的github上有了改变，而本地的该分支却没有这些改变，可以先pull远端的该分支，然后与本地的该分支merge以后再push。
+```git
+error: failed to push some refs to 'https://github.com/snowGlint/easybio.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+git pull origin newfun # 拉取该远端分支 然后在编辑器中合并
+git push origin newfun # merge完成以后再推送
+```
