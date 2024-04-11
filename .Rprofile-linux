@@ -15,13 +15,7 @@ if (interactive() && Sys.getenv("TERM_PROGRAM") == "vscode") {
 }
 
 # rstudio package manager
-options(repos = c(REPO_NAME = "https://packagemanager.rstudio.com/cran/latest"))
-options(BioC_mirror = "https://packagemanager.rstudio.com/bioconductor")
-
-# re-define install.packages
-install.packages <- function(pkgs) {
-  utils::install.packages(pkgs, INSTALL_opts = "--no-multiarch")
-  }
-
-# set pandoc path
-Sys.setenv(RSTUDIO_PANDOC = "/its1/GB_BT1/cuiwei/conda_software/bin/pandoc")
+if (.Platform$OS.type != "windows") {
+  options(repos = c(REPO_NAME = "https://packagemanager.rstudio.com/cran/latest"))
+  options(BioC_mirror = "https://packagemanager.rstudio.com/bioconductor")
+}
