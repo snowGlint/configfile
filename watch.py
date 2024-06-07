@@ -1,4 +1,4 @@
-#!/home/TL002/mambaforge/envs/m6a/bin/python
+#!/user/bin/python
 import psutil
 import pandas as pd
 import argparse
